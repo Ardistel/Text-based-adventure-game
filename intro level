@@ -1,0 +1,44 @@
+#Zork_clone.py
+
+import random
+import time
+
+def displayIntro():
+    print("You wakeup in a dark hallway. You have no recollection of how you got there or what is going on.")
+    print("The only thing you do remember is that you have to keep moving.")
+    time.sleep(1)
+    print("DO NOT TURN BACK!")
+
+def choosePath():
+    path = ""
+    while path != "1" and path != "2":
+        path = input("Do Go forth or do you turn back? (1 or 2): ")
+
+    return path
+
+def checkPath (chosenPath):
+    print("You head down the path")
+    time.sleep(0.5)
+    print("Darker and deeper into the dungeon")
+    print("you feel a light breeze in your face. Could there be an exit nearby?")
+    time.sleep(1)
+
+    correctPath = random.randint(1, 2)
+
+    if chosenPath == str(correctPath):
+        print("You were right to believe in the breeze! you see the exit right in front of you.")
+    else:
+        print("That was a poor choice.")
+        time.sleep(1)
+        print("You feel a set of jaws clampdown around to your throat. Everything fades to black.")
+        print("GAME OVER")
+        print("")
+
+playAgain = "yes"
+while playAgain == "yes" or playAgain == "y":
+    displayIntro()
+    choice = choosePath()
+    checkPath(choice)
+    print("")
+    playAgain = input("DO you want to play again? (yes/y to continue) ")
+    print("")
